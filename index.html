@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     body{
+        margin: 0%;
+        background-image: url("https://browsecat.art/sites/default/files/4k-natural-gradient-wallpapers-41090-1830189-8061723.png");
+        background-size: 100%;
+        background-size:cover ;
+        text-align:center;
+        
+       }
+    </style>
+</head>
+<body>
+ 
+        <input id="sowmya" type="text" placeholder="Enter username"/><br/>
+        <input id="jyo" type="text" placeholder="Enter your password "/><br/>
+        <button onclick="parser()">Submit</button>
+    
+   <script>
+    function parser(){
+        var username=document.getElementById("sowmya").value,save=document.getElementById("jyo").value
+        console.log(username)
+        fetch("http://localhost:3078/newData/",{
+            method:"POST",
+            headers:{
+                "Content-type":"application/json"
+            },
+            body:JSON.stringify({name:username,age:19,password:save})
+        })
+    .then((res)=>{
+        console.log(res)
+        if(res.status===200)
+         alert("Registered successfully")
+    })
+    .catch((err)=>{
+        alert(err)
+    })
+}
+           
+   </script> 
+</body>
+</html>
