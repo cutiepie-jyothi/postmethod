@@ -15,8 +15,8 @@ app.get("/",(req,res)=>{
     res.send("server is starting")
 })
 app.post("/newData",(req,res)=>{
-   const {name,age,password}=req.body
-   console.log(name,age,password)
+   const {name,age,password,fruit}=req.body
+   console.log(name,age,password,fruit)
    res.send("added successfully")
 })
 

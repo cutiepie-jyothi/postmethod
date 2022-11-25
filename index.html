@@ -12,26 +12,95 @@
         background-size: 100%;
         background-size:cover ;
         text-align:center;
-        
+        background-repeat: no-repeat;
+       
+       }
+       #sowmya{
+        font-size: 15px;
+        padding:0.4%;
+        margin-left: 10%;
+        margin-top:5%;
+        margin-right: 15%;
+
+       }
+       #jyo{
+        font-size: 15px;
+        padding:0.4%;
+        margin-left: 15%;
+        margin-top:2%;
+        margin-right: 20%;
+        margin-bottom: 1%;
+       }
+       #btn{
+        padding: 0.3%;
+        margin-left: 10.5%;
+        margin-top:2%;
+        font-size: 15px;
+        margin-right: 25%;
+       
+       }
+       #fruit{
+        font-size: 1rem;
+        margin-left: 14%;
+        margin-top:2%;
+        margin-right:25%;
+       }
+       .study{
+        margin-right:10%;
+       }
+       #degree{
+        margin-right: 3%;
+        margin-top: 2%;
+       }
+       #bsc{
+        margin-right: 1%;
        }
     </style>
 </head>
 <body>
- 
+        
         <input id="sowmya" type="text" placeholder="Enter username"/><br/>
         <input id="jyo" type="text" placeholder="Enter your password "/><br/>
-        <button onclick="parser()">Submit</button>
+       <div class="study">
+        <input type="radio" id="MPC" name="class"/>MPC<br/>
+        <input type="radio" id="MEC" name="class"/>MEC<br/>
+        <input type="radio"  id="BIPC"name="class"/>BIPC<br/>
+        <input type="radio" id="CEC" name="class"/>CEC<br/>
+        <span id="degree"> <input  type="radio" name="ug"/>Degree<br/></span>
+        <span id="bsc"> <input type="radio" name="ug"/>B.Sc<br/></span>
+        <input type="radio" name="ug"/>B.Com<br/>
+       </div>
+        <select id="fruit">
+            <option value="select a fruit">Select a fruit</option>
+            <option value="grapes">Grapes</option>
+            <option value="jackfruit">Jack fruit</option>
+            <option value="mango">Mango</option>
+            <option value="strawberry">Strawberry</option>
+        </select><br/>
+        <button id="btn" onclick="parser()">Submit</button>
     
    <script>
     function parser(){
-        var username=document.getElementById("sowmya").value,save=document.getElementById("jyo").value
+        var username=document.getElementById("sowmya").value,save=document. getElementById("jyo").value
         console.log(username)
+        var fruit=document.getElementById("fruit").value
+        console.log(fruit)
+        var mpc=document.getElementById("MPC").checked
+        var mec=document.getElementById("MEC").checked
+        var bipc=document.getElementById("BIPC").checked
+        var cec=document.getElementById("CEC").checked
+
+        if(mpc==true){ var inter="MPC"}
+        else if(mec==true) var inter ="MEC"
+        else if(bipc==true) var inter="BIPC"
+        else var inter="CEC"
+        console.log(inter)
         fetch("http://localhost:3078/newData/",{
             method:"POST",
             headers:{
                 "Content-type":"application/json"
             },
-            body:JSON.stringify({name:username,age:19,password:save})
+            body:JSON.stringify({name:username,age:19,password:save,fruit:fruit})
         })
     .then((res)=>{
         console.log(res)
@@ -42,6 +111,7 @@
         alert(err)
     })
 }
+
            
    </script> 
 </body>
